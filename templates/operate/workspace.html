@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Leckerli+One|UnifrakturCook:700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <!--REMEMBER TO REMOVE ?v= upon deployment -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='macros.css') }}?v=18">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function mymanager(name, table, limit ){
+            var tab, inpval, filter, tr, td, i, input, k;
+            k = 0;
+            input = document.getElementById(name).value;
+            filter = input.toUpperCase();
+            tab = document.getElementById(table);
+            inpval = tab.getElementsByTagName('strong');
+            td = tab.getElementsByTagName('td')
+            if (inpval){
+                for (i=0; i< inpval.length; i++){
+                    if (inpval[i].innerHTML.toUpperCase().indexOf(filter) > -1){
+                        k += 1;
+                        if (k < limit+1){
+                            td[i].style.display = "";
+                        } else {
+                            td[i].style.display = "none";
+                        }
+                    } else {
+                        td[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+    {%  from "macro/pillbar.html" import makepill %}
+</head>
+<body>
+{{  makepill(kwargs) }}
+</body>
+</html>

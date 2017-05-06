@@ -1,0 +1,52 @@
+{% macro pillcontents(pilltype, kwargs) %}
+    {% if pilltype == 'table' %}
+    {% elif pilltype == 'searchtable' %}
+        <div class="panel-body">
+        <table width="86%"  id="{{ kwargs['id'] }}">
+        {% set items = kwargs['contents'] %}
+        {% if items|length < 1 %}
+            <tr>
+                <td class="list-group-item">You Don't Have Any {{ kwargs['multilabel'] }}!</td>
+            </tr>
+            {% else %}
+            <tr class="header">
+                <th><input type="text" id="{{ kwargs['database_location'] }}" onkeyup="mymanager('{{ kwargs['database_location'] }}','{{ kwargs['id'] }}', '{{ kwargs['display-limit'] }}')"
+                                       placeholder="Search.." title="{{ kwargs['multilabel'] }}" style="width: 100%;"></th>
+            </tr>
+            {% for row in kwargs['contents']  %}
+            <tr>
+                <td><strong>{{ row.0 }}</strong>
+                <a href="/datasets/view/{{ row.0 }}" target="_blank"><span class="glyphicon glyphicon-eye-open"
+                                                                                 aria-hidden="true"
+                                                                                 style="float: right;"></span></a></td>
+            </tr>
+            {% endfor %}
+            </table>
+            <br>
+        {% endif %}
+        <div class="panel-footer" style="text-align: center;">
+            <strong style="text-align: center;"><a href="#" class="btn btn-primary"
+                                                   style="margin: 10px 7%; width: 86%;">All Datasets</a></strong>
+        </div>
+        </div>
+    {% elif pilltype == 'pill' %}
+    {% endif %}
+{% endmacro %}
+
+
+
+{% macro makepill(kwargs) %}
+    <div class="panel-group {{ kwargs['pill-class'] }}">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title hovs" data-toggle="collapse" href="#{{ kwargs['pill-id'] }}">
+                    <span class="glyphicon glyphicon-{{ kwargs['pill-glyph'] }}" aria-hidden="true"></span>&nbsp;{{ kwargs['pill-title'] }}
+                </h3>
+            </div>
+
+        <div id="{{ kwargs['pill-id'] }}" class="panel-collapse collapse">
+            {{  pillcontents(kwargs['pill-type'], kwargs['pill-contents']) }}
+        </div>
+        </div>
+    </div>
+{% endmacro %}

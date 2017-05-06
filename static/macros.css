@@ -1,0 +1,34 @@
+.myclass {
+    margin-top: 10%;
+}
+
+.hovs:hover {
+    cursor: pointer;
+}
+
+.myclass h3 {
+    text-align: center;
+}
+
+
+.myclass span {
+    float: right;
+}
+.myclass .panel-body {
+    padding: 0 0;
+}
+
+.myclass .table {
+    padding: 15px 15px;
+}
+.myclass .panel-body input {
+    width: 90%;
+    margin: 3% 5%;
+    text-align: center;
+}
+
+.myclass .panel-body td {
+    width: 45%;
+    text-align: center;
+}
+
