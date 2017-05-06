@@ -1,5 +1,9 @@
+.cround {
+    border-radius: 10px !important;
+}
+
 .myclass {
-    margin-top: 10%;
+    margin: 10% 3%;
 }
 
 .hovs:hover {
@@ -10,17 +14,21 @@
     text-align: center;
 }
 
-
 .myclass span {
+    margin-right: 10%;
     float: right;
+
 }
+
 .myclass .panel-body {
     padding: 0 0;
 }
 
-.myclass .table {
+.myclass table {
     padding: 15px 15px;
+    margin: auto;
 }
+
 .myclass .panel-body input {
     width: 90%;
     margin: 3% 5%;
@@ -31,4 +39,3 @@
     width: 45%;
     text-align: center;
 }
-
